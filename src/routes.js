@@ -1,9 +1,9 @@
 import Carrinho from "pages/Carrinho";
 import Feira from "pages/Feira";
 import Login from "pages/Login";
-import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { UsuarioContext, UsuarioProvider } from "common/Context/Usuario";
+import { UsuarioProvider } from "common/Context/Usuario";
+import { CarrinhoProvider } from "common/Context/Carrinho";
 
 function Router() {
   return (
@@ -13,9 +13,11 @@ function Router() {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path="/feira">
-            <Feira />
-          </Route>
+          <CarrinhoProvider>
+            <Route path="/feira">
+              <Feira />
+            </Route>
+          </CarrinhoProvider>
         </UsuarioProvider>
         <Route path="/carrinho">
           <Carrinho />

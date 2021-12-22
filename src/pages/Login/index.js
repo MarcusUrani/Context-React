@@ -16,6 +16,7 @@ function Login() {
         <Input
           type="text"
           value={nome}
+          required
           onChange={(event) => {
             setNome(event.target.value);
           }}
@@ -27,12 +28,14 @@ function Login() {
           type="number"
           startAdornment={<InputAdornment position="start">R$</InputAdornment>}
           value={saldo}
+          required
           onChange={(event) => {
             setSaldo(event.target.value);
           }}
         />
       </InputContainer>
       <Button
+        disabled={nome.length < 3}
         variant="contained"
         color="primary"
         onClick={() => history.push("/feira")}
